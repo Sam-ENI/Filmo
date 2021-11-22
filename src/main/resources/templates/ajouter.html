@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+
+
+
+		<h2>Ajout d'un film</h2>
+
+		<form method="post" th:object=${filmAjout} th:action="@{/ajouter}">
+			<div class="form-group">
+				<label for="titre" class="offset-1 col-2">titre</label> <input
+					id="titre" type="text" th:field="*{titre}" />
+			</div>
+			<div class="form-group">
+				<label for="anneeDeSortie" class="offset-1 col-2">anneeDeSortie</label>
+				<input id="anneeDeSortie" type="text" th:field="*{anneeDeSortie}" />
+			</div>
+			<div class="form-group">
+				<label for="duree" class="offset-1 col-2">duree</label> <input
+					id="duree" type="number" th:field="*{duree}" />
+			</div>
+			<!-- <div class="form-group">
+				<label for="lstActeurs" class="offset-1 col-2">lstActeurs</label> 
+				<input id= "lstActeurs" type="text" th:field="*{lstActeurs}"/>
+			</div> -->
+			<div class="form-group">
+				<label for="realisateur" class="offset-1 col-2">nom du
+					realisateur</label> <input id="realisateur" type="text"
+					th:field="*{realisateur.nom}" />
+			</div>
+			<div class="form-group">
+				<label for="realisateur" class="offset-1 col-2">prenom du
+					realisateur</label> <input id="realisateur" type="text"
+					th:field="*{realisateur.prenom}" />
+			</div>
+			
+			<!-- th:value sera la valeur setter ****** th:text la valeur afficher dans la combo box -->
+			
+			<div class="form-group">
+				<label for="GenreInput" class="offset-1 col-2">genre</label>
+	   			 <select xxclass="form-select mb-2" th:field="*{genre}" required>
+		  	<option th:each="genre: ${listeGenres}" 
+		  	th:value="${genre.genreDuFilm}" th:text="${genre.genreDuFilm}"></option>
+			</select>	
+	</div>
+	
+	<input class="btn btn-default col-4 offset-4" type="submit"
+		value="Valider" />
+	</form>
+	</div>
+</body>
+</html>

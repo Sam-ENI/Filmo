@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>page index</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h1 class="jumbotron">Filmothèque 2</h1>
+
+		<h2 class="h2">Liste des films:</h2>
+		<table class="table table-striped">
+			<tr>
+				<th>Titre</th>
+			
+			</tr>
+			<tr th:each="film: ${listeFilms}">
+			
+			<!-- Je transmet l'id au controller avec L'URL il faudra le récupérer avec @PathVariabl-->
+			<td><a th:href="@{/detail/{id}(id=${film.filmId})}" th:text="${film.titre}"></a></td>
+				
+
+			</tr>
+		</table>
+
+		<a th:href="@{/ajouter}">Ajouter un film</a>
+</body>
+</html>
